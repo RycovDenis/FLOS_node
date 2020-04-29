@@ -1,4 +1,4 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 
 //local mysql db connection
 var connection = mysql.createConnection({
@@ -8,6 +8,7 @@ var connection = mysql.createConnection({
     database : 'flos_db'
 });
 
+console.log("Connected to Mysql database server");
 connection.connect(function(err) {
     if (err) throw err;
 });

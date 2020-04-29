@@ -1,4 +1,4 @@
-var Task = require('../model/TasksModel');
+const Task = require('../model/TasksModel.js');
 
 exports.list_all_tasks = function(req, res) {
     Task.getAllTask(function(err, task) {
@@ -14,7 +14,7 @@ exports.list_all_tasks = function(req, res) {
 
 
 exports.create_a_task = function(req, res) {
-    var new_task = new Task(req.body);
+    const new_task = new Task(req.body);
 
     //handles null error
     if(!new_task.task || !new_task.status){
