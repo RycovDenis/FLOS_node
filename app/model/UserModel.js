@@ -56,14 +56,14 @@ User.isUserExisted = function (username,result){
  * @param result
  */
 User.checkData = function (req,result){
-    var username = req.body.username;
-    var password = req.body.password;
+    const username = req.body.username;
+    const password = req.body.password;
     sql.query("SELECT password FROM users WHERE email='"+username+"'",function (err, res){
         if(err) {
             console.log("error: ", err);
             result(err, null);
         }else{
-            var hash = res[0].password;
+            const hash = res[0].password;
             // if (!$hash or !password_verify($password, $hash))
             if(passHash(password).verify(hash)){
                 result(null, true);
@@ -79,7 +79,7 @@ User.checkData = function (req,result){
  * @param result
  */
 User.getUserData = function (req,result){
-    var username = req.body.username;
+    const username = req.body.username;
     sql.query("SELECT u.id, u.email,u.role, u.status, pi.user_id, f_name, l_name, m_name, inn, mobile_phone, INET_NTOA(ip), tab_num, company_post, region, date_password, r.role_name FROM personal_info pi, users u, roles r WHERE pi.user_id = u.id and r.id = u.role and u.email = '"+username+"';" ,function (err, res){
         if(err) {
             console.log("error: ", err);
@@ -98,15 +98,15 @@ User.getUserData = function (req,result){
  * @param result
  */
 User.putVerCode=function(req,sms_key,cost,balance,result){
-    var getIP = require('ipware')().get_ip;
-    var email = req.body.email;
-    var uphone = req.body.uphone;
-    var ipInfo = getIP(req);
+    const getIP = require('ipware')().get_ip;
+    const email = req.body.email;
+    const uphone = req.body.uphone;
+    const ipInfo = getIP(req);
 
     console.log(ipInfo);
-    var strtotime = require('locutus/php/datetime/strtotime');
+    const strtotime = require('locutus/php/datetime/strtotime');
 
-    var key_time = strtotime(new Date());
+    const key_time = strtotime(new Date());
     sql.query("INSERT INTO checked_sms(email,uphone, sms_key, key_time, cost, balance) VALUES('"+email+"','"+uphone+"', '"+sms_key+"', '"+key_time+"', '"+cost+"','"+balance+"')",function (err, res) {
         if(err) {
             console.log("error: ", err);
@@ -123,10 +123,10 @@ User.putVerCode=function(req,sms_key,cost,balance,result){
  * @param result
  */
 User.checkVerCode = function(req,result){
-    var email = req.body.email;
-    var vcode = req.body.vcode;
+    const email = req.body.email;
+    const vcode = req.body.vcode;
     sql.query( "SELECT sms_key FROM checked_sms where email = '"+email+"'and sms_key ='"+vcode+"';",function (err, res){
-        var v_key = res[0].sms_key.toString();
+        const v_key = res[0].sms_key.toString();
         if(err) {
             console.log("error: ", err);
             result(err, null);
@@ -141,12 +141,12 @@ User.checkVerCode = function(req,result){
 };
 
 User.readUserInfo = function(req,result){
-    var uid = req.body.uid;
+    const uid = req.body.uid;
     sql.query( "SELECT u.email,u.username, pi.user_id, f_name, l_name, m_name, inn, mobile_phone, INET_NTOA(ip), tab_num, company_post, region, date_password" +
         "FROM" +
         "personal_info pi, users u" +
         "WHERE pi.user_id = u.id and u.id = "+uid+"';",function (err, res){
-        var v_key = res[0].sms_key.toString();
+        const v_key = res[0].sms_key.toString();
         if(err) {
             console.log("error: ", err);
             result(err, null);
@@ -159,7 +159,7 @@ User.readUserInfo = function(req,result){
 };
 
 User.createUserInfo =function(req,result){
-    var uid = req.body.uid,
+    const uid = req.body.uid,
         fname = req.body.fname,
         lname = req.body.lname,
         mname = req.body.mname,

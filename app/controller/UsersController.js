@@ -14,27 +14,27 @@ exports.signin_user =function (req,res) {
                         console.log(err);
                     }
                     if(rezult) {
-                        var jsonwt = require('jsonwebtoken');
-                        var strtotime = require('locutus/php/datetime/strtotime');
+                        const jsonwt = require('jsonwebtoken');
+                        const strtotime = require('locutus/php/datetime/strtotime');
                         Users.getUserData(req,function(err, rezult) {
                             if (err){
                                 console.log(err);
                             }
-                            var url = require('url');
-                            var adr = req.protocol + '://' + req.get('host');
-                            var q = url.parse(adr, true);
-                           var jwt = jsonwt.sign({
-                               iss: q.host,
-                               aud: q.host,
-                               iat: strtotime(new Date()),
-                               uid: rezult[0].user_id,
-                               firstname: rezult[0].f_name,
-                               lastname: rezult[0].l_name,
-                               email: rezult[0].email,
-                               mphone: rezult[0].mobile_phone,
-                               role_id: rezult[0].role,
-                               role_name: rezult[0].role_name
-                           }, key);
+                            const url = require('url');
+                            const adr = req.protocol + '://' + req.get('host');
+                            const q = url.parse(adr, true);
+                            const jwt = jsonwt.sign({
+                                iss: q.host,
+                                aud: q.host,
+                                iat: strtotime(new Date()),
+                                uid: rezult[0].user_id,
+                                firstname: rezult[0].f_name,
+                                lastname: rezult[0].l_name,
+                                email: rezult[0].email,
+                                mphone: rezult[0].mobile_phone,
+                                role_id: rezult[0].role,
+                                role_name: rezult[0].role_name
+                            }, key);
                             res.json({
                                 error: false,
                                 message: 'Success created new user.',
@@ -97,32 +97,34 @@ exports.signup_user = function(req, res) {
 
 exports.confirm_user =function (req,res) {
     function randomSMSKey(skmlenght) {
-        var charset = "0123456789",
-            retVal = "";
-        for (var i = 0, n = charset.length; i < skmlenght; ++i) {
+        const charset = "0123456789";
+        let retVal = "";
+        let i = 0;
+        const n = charset.length;
+        for (; i < skmlenght; ++i) {
             retVal += charset.charAt(Math.floor(Math.random() * n));
         }
         return retVal;
     }
     if(typeof req !== 'undefined'){
-        var email = req.body.email; // $_POST["status"]
-        var uphone = req.body.uphone; // $_POST["status"]
+        const email = req.body.email; // $_POST["status"]
+        const uphone = req.body.uphone; // $_POST["status"]
         if(email!==null&&uphone!==null){
-            var ver_code = randomSMSKey(6);
-            var ver_url = "https://smsc.kz/sys/send.php?login=vargar929&psw=v0Vqla20&phones=+"+uphone+"&mes=Код верификации:"+ver_code+"!&translit=1";
-            var msg_pre ="Ваш код потверждения:";
-            var msg_post =". Наберите его в поле ввода.";
-            var http = require('http');
+            const ver_code = randomSMSKey(6);
+            const ver_url = "https://smsc.kz/sys/send.php?login=vargar929&psw=v0Vqla20&phones=+" + uphone + "&mes=Код верификации:" + ver_code + "!&translit=1";
+            const msg_pre = "Ваш код потверждения:";
+            const msg_post = ". Наберите его в поле ввода.";
+            const http = require('http');
             http.get(`http://smsc.kz/sys/send.php?login=vargar929&psw=v0Vqla20&phones=+${encodeURIComponent(uphone)}
             &mes=${encodeURIComponent(msg_pre)}${encodeURIComponent(ver_code)}${encodeURIComponent(msg_post)}&translit=1&cost=3&fmt=3`, function(resp){
-                var body = '';
+                let body = '';
                 resp.on('data', function(data){
                     body += data;
                 });
 
                 resp.on('end', function(){
-                    var cost = JSON.parse(body).cost;
-                    var balance = JSON.parse(body).balance;
+                    const cost = JSON.parse(body).cost;
+                    const balance = JSON.parse(body).balance;
                     Users.putVerCode(req,ver_code,cost,balance,function(err, k_sms) {
                         if (err){
                             res.send({
@@ -151,6 +153,7 @@ exports.confirm_user =function (req,res) {
 
 exports.verify_sms =function (req,res) {
     if(typeof req !== 'undefined'){
+        // noinspection JSUnresolvedVariable
         if(req.body.email!==null&&req.body.vcode!==null){
             Users.checkVerCode(req,function(err, result){
 
@@ -188,7 +191,7 @@ exports.read_user_info =function (req,res) {
                 if (err){
                     console.log(err);
                 }
-                var jwt = jsonwt.sign({
+                const jwt = jsonwt.sign({
                     email: result[0].email,
                     username: result[0].username,
                     user_id: result[0].user_id,

@@ -23,6 +23,7 @@ exports.create_new_ticket = function(req, res) {
                 message: 'Success created new ticket.',
                 result: tickets
             });
+            // noinspection JSUnresolvedVariable
             Notify.fcm_notify(req.body.UserID,"Заявка №"+tickets,req.body.TicketDesc+" Дата: "+new Data() + " Телефон: "+req.body.UserPhone);
         });
     }
@@ -30,9 +31,9 @@ exports.create_new_ticket = function(req, res) {
 
 exports.read_a_ticket = function(req, res) {
     if(typeof req !== 'undefined'){
-        var uid = req.body.id; // $_POST["id"]
-        var status = req.body.status; // $_POST["status"]
-        var role = req.body.role; // $_POST["role"]
+        const uid = req.body.id; // $_POST["id"]
+        const status = req.body.status; // $_POST["status"]
+        const role = req.body.role; // $_POST["role"]
             if ( typeof status !== 'undefined'&&status!==null&&uid!==null&&role!==null){
                 if(role === "1"){
                     Tickets.getTicketByIdAndStatus(req.body, function(err, tickets) {
@@ -110,8 +111,8 @@ exports.update_a_ticket = function(req, res) {
 
 
 exports.delete_a_ticket = function(req, res) {
-        var tid =req.body.ti_id;
-        var role = req.body.role; // $_POST["role"]
+    const tid = req.body.ti_id;
+    const role = req.body.role; // $_POST["role"]
        if (tid!==null&&role!==null){
             if(role === "5"){
                 Tickets.remove( tid, function(err, tickets) {
