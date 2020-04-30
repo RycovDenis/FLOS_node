@@ -18,16 +18,13 @@ module.exports = function(app) {
     app.route('/signup')
         .post(Users.signup_user);
 
-    // app.route('/cfnewuser')
-    //     .post(Users.confir_user);
-    //
+    app.route('/cfnewuser')
+        .post(Users.confirm_user);
+
     app.route('/verifysms')
-        .post(Users.isUserExisted);
-    //     .post(Users.verify_sms);
-    //
-    // app.route('/getuinfo')
-    //     .post(Users.read_user_info);
-    //
-    // app.route('/setuinfo')
-    //     .post(Users.write_user_info);
+        .post(Users.verify_sms);
+
+    app.route('/uinfo')
+        .post(Users.read_user_info)
+        .put(Users.write_user_info);
 };
