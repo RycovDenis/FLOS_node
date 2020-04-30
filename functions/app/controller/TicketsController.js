@@ -1,19 +1,7 @@
-var Tickets = require('../model/TicketsModel');
-
-exports.list_all_tickets = function(req, res) {
-    Tickets.getAllTask(function(err, tickets) {
-        console.log('controller');
-        if (err)
-            res.send(err);
-        console.log('res', tickets);
-        res.send(tickets);
-    });
-};
-
-
+const Tickets = require('../model/TicketsModel.js');
 
 exports.create_new_ticket = function(req, res) {
-    var new_ticket = new Tickets(req.body);
+    const new_ticket = new Tickets(req.body);
 
     //handles null error
     if(!new_ticket.ti_email || !new_ticket.user_id){

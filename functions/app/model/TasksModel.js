@@ -1,7 +1,7 @@
-var sql = require('../libs/db.js');
+const sql = require('../libs/db.js');
 
 //Task object constructor
-var Task = function(task){
+const Task = function (task) {
     this.task = task.task;
     this.status = task.status;
     this.created_at = new Date();
@@ -20,7 +20,7 @@ Task.createTask = function (newTask, result) {
     });
 };
 Task.getTaskById = function (taskId, result) {
-    sql.query("Select task from tasks where id = ? ", taskId, function (err, res) {
+    sql.query("select task from tasks where id = ? ", taskId, function (err, res) {
         if(err) {
             console.log("error: ", err);
             result(err, null);

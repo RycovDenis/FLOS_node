@@ -1,7 +1,7 @@
-var sql = require('../libs/db.js');
+const sql = require('../libs/db.js');
 
 //Task object constructor
-var Tickets = function(tickets){
+const Tickets = function (tickets) {
     this.ti_email = tickets.email;
     this.ti_phone = tickets.UserPhone;
     this.title = tickets.ticketTitle;
