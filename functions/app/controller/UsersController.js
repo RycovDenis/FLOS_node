@@ -192,15 +192,20 @@ exports.verify_sms =function (req,res) {
 exports.read_user_info =function (req,res) {
     if(typeof req !== 'undefined') {
         if(req.body.uid!==null){
-            Users.createUserInfo(req,function (err,result) {
+            Users.readUserInfo(req,function (err,result) {
                 var jwt = jsonwt.sign({
-                    uid: rezult[0].user_id,
-                    firstname: rezult[0].f_name,
-                    lastname: rezult[0].l_name,
-                    email: rezult[0].email,
-                    mphone: rezult[0].mobile_phone,
-                    role_id: rezult[0].role,
-                    role_name: rezult[0].role_name
+                    email: result[0].email,
+                    username: result[0].username,
+                    user_id: result[0].user_id,
+                    f_name: result[0].f_name,
+                    l_name: result[0].l_name,
+                    m_name: result[0].m_name,
+                    inn: result[0].inn,
+                    mobile_phone: result[0].mobile_phone,
+                    tab_num: result[0].tab_num,
+                    company_post: result[0].company_post,
+                    region: result[0].region,
+                    date_password: result[0].date_password
                 }, key);
                 res.json({
                     error: false,

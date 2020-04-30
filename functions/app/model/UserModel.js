@@ -140,6 +140,24 @@ User.checkVerCode = function(req,result){
 
 };
 
+User.readUserInfo = function(req,result){
+    var uid = req.body.uid;
+    sql.query( "SELECT u.email,u.username, pi.user_id, f_name, l_name, m_name, inn, mobile_phone, INET_NTOA(ip), tab_num, company_post, region, date_password" +
+        "FROM" +
+        "personal_info pi, users u" +
+        "WHERE pi.user_id = u.id and u.id = "+uid+"';",function (err, res){
+        var v_key = res[0].sms_key.toString();
+        if(err) {
+            console.log("error: ", err);
+            result(err, null);
+
+        }else{
+            result(null, res);
+        }
+    });
+
+};
+
 User.createUserInfo =function(req,result){
     var uid = req.body.uid,
         fname = req.body.fname,

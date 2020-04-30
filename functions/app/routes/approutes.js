@@ -10,6 +10,23 @@ module.exports = function(app) {
         .delete(ticketList.delete_a_ticket);
 };
 module.exports = function(app) {
+    const notifyList = require('../controller/NotyfyController');
+    // todoList Routes
+    app.route('/storegcmtoken')
+        .post(notifyList.registerDevice);
+    app.route('/sendbums')
+        .post(notifyList.sendBumsPush);
+    app.route('/sendspm')
+        .post(notifyList.sendSinglePush);
+};
+module.exports = function(app) {
+    const adminList = require('../controller/AdminController');
+    // todoList Routes
+    app.route('/adminifo')
+        .post(adminList.read_admin_info)
+        .put(adminList.write_admin_info);
+};
+module.exports = function(app) {
     const Users = require('../controller/UsersController');
     // todoList Routes
     app.route('/signin')
