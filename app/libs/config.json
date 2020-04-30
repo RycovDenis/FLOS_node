@@ -1,0 +1,14 @@
+{
+  "http": {
+    "port": 8080
+  },
+  "mysql": {
+    "host": "db4free.net",
+    "port": "3306",
+    "database": "flos_db",
+    "user": "flos_db",
+    "password": "qY2q3g7XPERua$9",
+    "timeout": 10000,
+    "charset": "UTF8_GENERAL_CI"
+  }
+}

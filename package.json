@@ -1,29 +1,43 @@
 {
-  "name": "functions",
-  "description": "Cloud Functions for Firebase",
-  "scripts": {
-    "lint": "eslint .",
-    "serve": "firebase emulators:start --only functions",
-    "shell": "firebase functions:shell",
-    "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+  "name": "flost-server-core",
+  "description": "first line of support Node.js server core for Google App Engine Standard Environment.",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "author": "Rykov_D",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RycovDenis/FLOS_node.git"
   },
   "engines": {
-    "node": "10"
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha --exit test/*.test.js"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fcm-node": "^1.5.2",
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.6.1",
+    "httpclient": "^0.1.0",
+    "ipware": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "jws": "^4.0.0",
+    "locutus": "^2.0.11",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "nconf": "^0.10.0",
     "password_hash": "^1.1.0",
-    "rotating-file-stream": "^2.1.0"
+    "rotating-file-stream": "^2.1.0",
+    "url": "^0.11.0"
   },
   "devDependencies": {
-    "eslint": "^5.12.0",
-    "eslint-plugin-promise": "^4.0.1",
-    "firebase-functions-test": "^0.2.0"
-  },
-  "private": true
+    "mocha": "^7.0.0",
+    "supertest": "^4.0.2"
+  }
 }
