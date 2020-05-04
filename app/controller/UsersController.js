@@ -1,6 +1,7 @@
 const Users = require('../model/UserModel.js');
 const key = "144541354333adswcxs2axas24xcas1x456as47d532c4w";
-
+const jsonwt = require('jsonwebtoken');
+const strtotime = require('locutus/php/datetime/strtotime');
 
 exports.signin_user =function (req,res) {
     if(typeof req !== 'undefined'){
@@ -14,8 +15,7 @@ exports.signin_user =function (req,res) {
                         console.log(err);
                     }
                     if(rezult) {
-                        const jsonwt = require('jsonwebtoken');
-                        const strtotime = require('locutus/php/datetime/strtotime');
+
                         Users.getUserData(req,function(err, rezult) {
                             if (err){
                                 console.log(err);
@@ -207,7 +207,7 @@ exports.read_user_info =function (req,res) {
                 }, key);
                 res.json({
                     error: false,
-                    message: 'Success created new user.',
+                    message: 'Success geted user info.',
                     jwt: jwt
                 });
             });

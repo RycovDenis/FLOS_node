@@ -30,7 +30,7 @@ Notify.isEmailexist = function (req, result) {
 }
 Notify.getTokenByEmail = function (req, result) {
     // sql.query("INSERT INTO users set ?", newUser, function (err, res) {
-    sql.query("SELECT token FROM devices WHERE email = ?", req.body.email, function (err, res) {
+    sql.query("SELECT token FROM devices WHERE email = ?", req, function (err, res) {
         if (err) {
             result(err, null);
         } else {

@@ -2,8 +2,17 @@
   "http": {
     "port": 8080
   },
-  "mysql": {
+  "mysql_res": {
     "host": "db4free.net",
+    "port": "3306",
+    "database": "flos_db",
+    "user": "flos_db",
+    "password": "qY2q3g7XPERua$9",
+    "timeout": 10000,
+    "charset": "UTF8_GENERAL_CI"
+  },
+  "mysql": {
+    "host": "35.205.72.71",
     "port": "3306",
     "database": "flos_db",
     "user": "flos_db",

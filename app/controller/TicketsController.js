@@ -2,17 +2,8 @@ const Tickets = require('../model/TicketsModel.js');
 const Notify = require('./NotyfyController');
 exports.create_new_ticket = function(req, res) {
     const new_ticket = new Tickets(req.body);
-
-    //handles null error
-    if(!new_ticket.ti_email || !new_ticket.user_id){
-        res.status(400).send({
-            error:true,
-            message: 'Please provide ticket/status'
-        });
-
-    }
-    else{
-        Tickets.createTicket(new_ticket, function(err, tickets) {
+    if(typeof req !== 'undefined'){
+        Tickets.createTicket(req, function(err, tickets) {
             if (err)
                 res.send({
                     error: true,
@@ -24,7 +15,7 @@ exports.create_new_ticket = function(req, res) {
                 result: tickets
             });
             // noinspection JSUnresolvedVariable
-            Notify.fcm_notify(req.body.UserID,"Заявка №"+tickets,req.body.TicketDesc+" Дата: "+new Data() + " Телефон: "+req.body.UserPhone);
+            Notify.fcm_notify(req.body.email,"Заявка №"+tickets,req.body.TicketDesc+" Дата: "+new Date() + " Телефон: "+req.body.UserPhone);
         });
     }
 };

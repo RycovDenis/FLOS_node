@@ -142,16 +142,13 @@ User.checkVerCode = function(req,result){
 
 User.readUserInfo = function(req,result){
     const uid = req.body.uid;
-    sql.query( "SELECT u.email,u.username, pi.user_id, f_name, l_name, m_name, inn, mobile_phone, INET_NTOA(ip), tab_num, company_post, region, date_password" +
-        "FROM" +
-        "personal_info pi, users u" +
-        "WHERE pi.user_id = u.id and u.id = "+uid+"';",function (err, res){
-        const v_key = res[0].sms_key.toString();
+    sql.query( "SELECT u.email,u.username, pi.user_id, f_name, l_name, m_name, inn, mobile_phone, INET_NTOA(ip), tab_num, company_post, region, date_password FROM personal_info pi, users u WHERE pi.user_id = u.id and u.id = '"+uid+"';",function (err, res){
         if(err) {
             console.log("error: ", err);
             result(err, null);
 
         }else{
+            console.log("error: ", res);
             result(null, res);
         }
     });
@@ -171,14 +168,14 @@ User.createUserInfo =function(req,result){
         date_p = new Date();
     // 'ip'=>get_ip(),
 //     INET_ATON(:ip)
-    sql.query( "insert into personal_info(user_id, f_name, l_name, m_name, inn, mobile_phone,"+
-        "tab_num, company_post, region, date_password) " +
-        "values('"+uid+"','"+fname+"','"+lname+"','"+mname+"','"+uinn+"','"+uphone+"','"+utabnum+"','"+ucp+"','"+uregion+"','"+date_p+"');",function(err,res){
+    sql.query( `insert into personal_info(user_id, f_name, l_name, m_name, inn, mobile_phone, tab_num, company_post, region, date_password)  values ('${uid}','${fname}','${lname}','${mname}','${uinn}','${uphone}','${utabnum}','${ucp}','${uregion}','${date_p}');`,function(err, res){
         if(err) {
             console.log("error: ", err);
             result(err, null);
         }
         else{
+            console.log("error: ", err);
+
             result(null, res.insertId);
         }
     });

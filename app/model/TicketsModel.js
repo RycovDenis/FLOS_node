@@ -9,14 +9,19 @@ const Tickets = function (tickets) {
     this.text = tickets.TicketDesc;
     this.user_id = tickets.UserID;
     // this.owner_id = tickets.owner_id;
-    this.status = tickets.status;
+    // this.status = tickets.status;
     this.ti_date = new Date();
 
 };
-Tickets.createTicket = function (newTicket, result) {
-    sql.query("INSERT INTO tickets set ?", newTicket, function (err, res) {
-    // sql.query("INSERT INTO tickets set ?", newTicket, function (err, res) {
-
+Tickets.createTicket = function (req, result) {
+    const email = req.body.email,
+        uphone = req.body.UserPhone,
+        title = req.body.ticketTitle,
+        text = req.body.TicketDesc,
+        uid = req.body.UserID,
+        priority = req.body.ticketPriority,
+        date_p = new Date().toISOString().split('T')[0];
+    sql.query( "insert into tickets(title, text, user_id, priority, ti_date, ti_email, ti_phone)  values ('"+title+"','"+text+"','"+uid+"','"+priority+"','"+date_p+"','"+email+"','"+uphone+"');",function(err, res){
         if(err) {
             console.log("error: ", err);
             result(err, null);

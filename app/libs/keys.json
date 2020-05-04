@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sdesc-14101",
+  "private_key_id": "7e91b0e50a1685144d90f3da3149f40539cf144b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCv/41ZoaqiJUmx\n7KBwpsK5TQDtYz7ThILNzt9Xla5I7wWiUJvi+WAuJgTkzm7mE6P7I5pIq/tYGlP6\nJoCjaSRYENUMwmNlBjPQ3nUxSBTt7zHWN05a+DgHWt2C1fhI5I6MudvBcfWWGfkQ\nl2LAAtJ16gHhpr8sOo2q8bX5WFZyJSdGyhL45+SA5fuEBRWSiviKmwjxApguTE5y\nfqcEuHTVirvJSoAgCN9hcEw5Jhcc76caDQ7hczfy60KHuHcaMdGEdU56sQihsQUH\nLJ1KhyhDCfyKaaSUjXWT7WzLWRmumsjihSNxSLEnetVLyGCq3EOcgy8qWWsip8/a\n4NTmv345AgMBAAECggEAAjZQWMTRL/4PfdLHVnsmHe2jmhhCASccfMlBoehx+x00\nAS0JtJHlXVchfx3AI5iyGjVBmnG89EfKb+29drBa4ld90g38cVfhXVn6d57cEnyL\n8BEcZUTS8Xa5K4yUdRgYWZj5c+ZCi7syV/zLIzY13oENOoCdzQjEYJZurt5nIcKj\n491Z6hblfWNdMcebpayMuOruIx/NN5Ngdt2xsXeYB84VjG9/zqjdul5dgbqk6s99\ne5s6np1gah8YrNoLShxs5s2samkXOWYwQIGEYBqEUx8wOART1zanL7W59X06pRjI\nfgBB1UrSJc99dI3yWAvydAdJ2agK5fPGieVgjoUpAQKBgQD4CLgdso8AIBKM87Lp\nK8TxXFqkAjvTG2aRAGZkIhU7dqeUvNq9PhNEjE54IU7DgdzKlhEQNRLgkGOwybtY\nXOewNvkw2sz8wRW6DKBj//Ut+SFIHYZ0Y/Etk5QbRHQF845+qRrzK82a/SkG+P+n\nZAJs4AQWqqrXlp9koYSEczwggQKBgQC1ppIQy/YKl7kRcTowWpeZfNR2AiQhBfib\naw2ZTtpjH5vz/3JnsualF8OgAlnOYCITajO1YRewWDFkimjqK6AOHnT6P3ih1DPp\n4Q7w69FR9ibA8qlF7mrmOlXY9RVcWbhuV1O1gBdsrM1Bh2m8dtpOFMJCtBSmCicw\nM49LvmuBuQKBgCH5h8bBm6bnvcLC6uHXlf19qgjHKYysNytrg5r5tDDV+vR7vfao\nFxmPonwAC/rpweWaErJGotRR0uX3bAsZhr7zeMTBY8zHYgN/EUVBXUMz2eQ37x/o\nRLP6gBIQGVhrWTxuS3u9p0cwoDsNRm+WWmKxeL3mGMq5HhI5sZ427qiBAoGAJbFV\nt9SKznHjPiJPn778nCXR9FbHZm7VwnI5VSmOmWjytHO6Kpht0a4XsrkqJ2+9QmgU\nKLvn7XivbxxlXsoEoUlinpbTEkl1KD/CGO3l9mrsabcwtskdN369V5Krhwk7AvJt\n9UiKE8vbn5BYuXm0HOWj1bGGY1nR/eeFAYOWzUkCgYEA23qBagbal35pYaB56GSa\nY6/R2MVcItBnzbzy9U5qWsx0jmeSMFswnxjjQtQRPM9Qmepar2DrO57GQeRXsotc\nyBg/wBmeJ9rqR429PERZnYc5ajxJk6E4M6s0dYnmTCylbqA2Z24YKF8+NRM8CegZ\n5kvxt40KcDvVMgAiSH/S7SI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "flos-app@sdesc-14101.iam.gserviceaccount.com",
+  "client_id": "109942433280373940615",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/flos-app%40sdesc-14101.iam.gserviceaccount.com"
+}

@@ -49,6 +49,8 @@ exports.fcm_notify = function (email,title,body,image=null){
             console.log(err);
         }else{
             const dev_token = result[0].token;
+            console.log(dev_token);
+
             if(image!==null){
                 const message = {
                     to: dev_token,
