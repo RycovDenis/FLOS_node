@@ -2,7 +2,7 @@
   "http": {
     "port": 8080
   },
-  "mysql_res": {
+  "mysql_db4free": {
     "host": "db4free.net",
     "port": "3306",
     "database": "flos_db",

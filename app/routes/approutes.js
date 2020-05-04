@@ -1,9 +1,12 @@
 module.exports = function(app) {
+    const indexList = require('../controller/IndexController');
     const ticketList = require('../controller/TicketsController');
     const adminList = require('../controller/AdminController');
     const usersList = require('../controller/UsersController');
     const notifyList = require('../controller/NotyfyController');
-
+    const appList = require('../controller/appController');
+    app.route('/')
+        .get(indexList.getIndexPage);
     app.route('/newti')
         .post(ticketList.create_new_ticket);
     app.route('/tickets')
@@ -11,11 +14,9 @@ module.exports = function(app) {
         .put(ticketList.update_a_ticket)
         .delete(ticketList.delete_a_ticket);
 
-
     app.route('/adminifo')
         .post(adminList.read_admin_info)
         .put(adminList.write_admin_info);
-
 
     app.route('/signin')
         .post(usersList.signin_user);
@@ -34,4 +35,7 @@ module.exports = function(app) {
         .post(notifyList.registerDevice);
     app.route('/sendspm')
         .post(notifyList.sendSinglePush);
+
+    app.route('/version')
+        .post(appList.getAppVersion)
 };

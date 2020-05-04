@@ -1,5 +1,6 @@
 'use strict';
 const express = require('express');
+const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const fs = require("fs");
@@ -8,37 +9,32 @@ const MimeLookup = require('mime-lookup');
 const mime = new MimeLookup(require('mime-db'));
 const multer = require('multer')
 const dfile = require("./app/libs/helpers");
-
-const app = express();
+app.set('view engine', 'twig');
 const routes = require('./app/routes/approutes.js'); //importing route
+const Twig = require("twig");
+app.set("twig options", {
+    allow_async: true, // Allow asynchronous compiling
+    strict_variables: false
+});
 
 const multerMid = multer({
     storage: multer.memoryStorage(),
     limits: {
         fileSize: 5 * 1024 * 1024,
     },
-})
+});
 
 app.use(morgan('combined'));
 const config =require('./app/libs/app.config');
+app.use(multerMid.single('file'));
 app.use('/favicon.ico', express.static('/favicon.ico'));
 
-app.disable('x-powered-by')
-app.use(multerMid.single('file'))
+app.disable('x-powered-by');
+// app.set('view engine', 'pug');
 
-
-app.get('/', (req, res) => {
-    res.status(200).send('Hello, world!').end();
-});
-app.post('/Version.txt', (req, res) => {
-    console.log(`Запрошенный адрес: ${req.url}`);
-    const filePath = req.url.substr(1);
-    dfile.downloadfile("flos-app",filePath,req.body.patch);
-    res.send({
-        error: false,
-        message: 'Success!'
-    });
-});
+// app.get('/', (req, res) => {
+//     res.status(200).send('Hello, world!').end();
+// });
 
 app.get("/newapk/:vername/:vercode/:filename",(req,res)=>{
     console.log(`Запрошенный адрес: ${req.url}`);
@@ -51,8 +47,9 @@ app.get("/newapk/:vername/:vercode/:filename",(req,res)=>{
     });
 });
 
-app.post('/setupdates', (req, res, next) => {
-})
+app.post('/setupdates', (req, res) => {
+
+});
 
 const PORT = process.env.PORT || config.get('http:port');
 

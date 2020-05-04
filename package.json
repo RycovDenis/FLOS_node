@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^4.7.0",
-    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -40,7 +39,8 @@
     "password_hash": "^1.1.0",
     "rotating-file-stream": "^2.1.0",
     "serve-favicon": "^2.5.0",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "twig": "latest"
   },
   "devDependencies": {
     "mocha": "^7.0.0",
